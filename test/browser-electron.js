@@ -18,7 +18,8 @@ describe('browser-electron', () => {
   var server, client
 
   before((done) => {
-    server = cp.spawn('electron', [path.join(process.cwd(), 'test/electron/')])
+    server = cp.spawn('electron',
+      [path.join(process.cwd(), 'test/electron/')], {detached: true})
     server.stdout.on('data', (e) => {
       var output = e.toString().trim()
       console.log(output)
@@ -41,8 +42,5 @@ describe('browser-electron', () => {
     })
   })
 
-  after((done) => {
-    server.kill('SIGHUP')
-    done()
-  })
+  after(() => process.kill(-server.pid))
 })

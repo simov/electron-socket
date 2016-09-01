@@ -54,6 +54,15 @@ describe('browser-server-electron', () => {
     })
   })
 
+  it('disconnect', (done) => {
+    client.send(JSON.stringify({message: 'disconnect'}))
+
+    client.once('message', (req) => {
+      t.deepEqual(JSON.parse(req), {message: 'disconnected'})
+      done()
+    })
+  })
+
   after((done) => {
     server.kill('SIGHUP')
     done()

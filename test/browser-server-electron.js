@@ -1,14 +1,14 @@
 
 /*
-  1. admin: Spawn a web-server (ws)
-  2. user: Connect a web socket to it (browser)
-  3. user: Send a `connect` message
-  4. server: Spawn the electron app on `connect` message
-  5. electron: Load the webview and wait for it to load
-  6. electron: Send `ipcRenderer` message back to the main script
-  7. electron: Load the electron-server on `connect` message
-  8. server: On electron-server loaded connect a web socket to it
-  9. server: After ws connection is established send back a `connected` message to the user
+  1. admin: start a web-server (ws)
+  2. user: connect a web socket to it (browser)
+  3. user: send a `connect` message
+  4. server: spawn Electron process on `connect` message
+  5. electron: load the webview and wait for it to load
+  6. electron: send `connect` message back to the electron-server
+  7. electron: write to stdout to indicate that the electron-server is ready
+  8. server: on electron-server ready, connect a web socket to it
+  9. server: after ws connection is established send back a `connected` message to the user
 */
 
 var config = require('../config')[process.env.NODE_ENV || 'development']

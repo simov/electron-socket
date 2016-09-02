@@ -22,7 +22,7 @@ describe('browser-server-electron', () => {
   var server, client
 
   before((done) => {
-    server = cp.spawn('node', [path.join(process.cwd(), 'lib/ws-server')])
+    server = cp.spawn('node', [path.join(process.cwd(), 'test/ws/server')])
     server.stdout.on('data', (e) => {
       var output = e.toString().trim()
       console.log(output)

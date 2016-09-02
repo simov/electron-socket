@@ -2,8 +2,7 @@
 var electron = require('electron')
 var app = electron.app
 var BrowserWindow = electron.BrowserWindow
-var ipcMain = electron.ipcMain
-var server = require('../../lib/electron-server')
+var server = require('../../').electron
 var win = null
 
 

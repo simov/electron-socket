@@ -42,5 +42,11 @@ describe('browser-electron', () => {
     })
   })
 
+  it('disconnect', (done) => {
+    client.send(JSON.stringify({message: 'disconnect'}))
+
+    client.once('close', () => done())
+  })
+
   after(() => process.kill(-server.pid))
 })

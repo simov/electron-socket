@@ -7,11 +7,15 @@
   5. electron: write to stdout to indicate that the electron-server is ready
 */
 
-var config = require('../config')[process.env.NODE_ENV || 'development']
+process.env.WS_PORT = 3011
+process.env.EL_PORT = 3012
+
 var t = require('assert')
 var path = require('path')
 var cp = require('child_process')
 var engine = require('engine.io-client')
+
+process.env.EL_APP = path.join(process.cwd(), 'test/electron/')
 
 
 describe('browser-electron', () => {
@@ -25,7 +29,7 @@ describe('browser-electron', () => {
       console.log(output)
 
       if (/electron-server-ready/.test(output)) {
-        client = engine('ws://localhost:' + config.electron)
+        client = engine('ws://localhost:' + process.env.EL_PORT)
         client.on('open', () => done())
       }
     })

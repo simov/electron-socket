@@ -1,7 +1,0 @@
-{
-  "development": {
-    "ws": 3011,
-    "electron": 3012,
-    "path": "/home/s/modules/electron-socket/test/electron"
-  }
-}

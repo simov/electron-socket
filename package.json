@@ -1,8 +1,7 @@
 {
   "name": "electron-socket",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Electron Socket",
-  "private": true,
   "keywords": [],
   "license": "Apache-2.0",
   "homepage": "https://github.com/simov/electron-socket",
@@ -18,6 +17,10 @@
   },
   "devDependencies": {
     "eslint": "^3.4.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   },
   "main": "index.js",
@@ -30,6 +33,7 @@
   "scripts": {
     "test": "npm run lint && npm run test-ci",
     "test-ci": "mocha test/",
+    "test-cov": "istanbul cover _mocha",
     "lint": "eslint **/*.js && echo Lint Passed"
   },
   "engines": {

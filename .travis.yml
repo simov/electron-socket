@@ -6,9 +6,19 @@ node_js:
   - 6
   - 4
 
-after_script:
-  - npm run test-cov
-  - cat ./coverage/lcov.info | coveralls
-  - cat ./coverage/lcov.info | codecov
+addons:
+  apt:
+    packages:
+      - xvfb
+
+install:
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+  - npm install
+
+# after_script:
+#   - npm run test-cov
+#   - cat ./coverage/lcov.info | coveralls
+#   - cat ./coverage/lcov.info | codecov
 
 sudo: false

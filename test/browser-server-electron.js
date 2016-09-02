@@ -27,7 +27,7 @@ describe('browser-server-electron', () => {
       var output = e.toString().trim()
       console.log(output)
 
-      if (/ws-server/.test(output)) {
+      if (/ws-server-ready/.test(output)) {
         client = engine('ws://localhost:' + config.ws)
         client.on('open', () => done())
       }

@@ -15,15 +15,15 @@ var path = require('path')
 var cp = require('child_process')
 var engine = require('engine.io-client')
 
-process.env.EL_APP = path.join(process.cwd(), 'test/electron/')
+process.env.EL_APP = path.join(__dirname, './electron/')
 
 
 describe('browser-electron', () => {
   var server, client
 
   before((done) => {
-    server = cp.spawn('electron',
-      [path.join(process.cwd(), 'test/electron/')], {detached: true})
+    server = cp.spawn(path.join(__dirname, '../node_modules/.bin/electron'),
+      [path.join(__dirname, './electron/')], {detached: true})
     server.stdout.on('data', (e) => {
       var output = e.toString().trim()
       console.log(output)

@@ -19,14 +19,14 @@ var path = require('path')
 var cp = require('child_process')
 var engine = require('engine.io-client')
 
-process.env.EL_APP = path.join(process.cwd(), 'test/electron/')
+process.env.EL_APP = path.join(__dirname, './electron/')
 
 
 describe('browser-server-electron', () => {
   var server, client
 
   before((done) => {
-    server = cp.spawn('node', [path.join(process.cwd(), 'test/ws/server')])
+    server = cp.spawn('node', [path.join(__dirname, './ws/server')])
     server.stdout.on('data', (e) => {
       var output = e.toString().trim()
       console.log(output)
